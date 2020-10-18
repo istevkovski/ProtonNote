@@ -1,0 +1,15 @@
+.protonnote {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+
+	main {
+		display: flex;
+		flex-direction: row;
+		flex: 1;
+
+		> div {
+			width: 50%;
+		}
+	}
+}

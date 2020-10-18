@@ -1,0 +1,28 @@
+.editor {
+	display: flex;
+	flex-direction: column;
+
+	&__title {
+		input {
+			padding: var(--space-half) var(--space-default);
+			width: 100%;
+			border: 1px solid var(--contrast-divider);
+			border-bottom: 0;
+			font-size: var(--body);
+		}
+	}
+
+	&__body {
+		display: flex;
+		flex: 1;
+
+		textarea {
+			padding: var(--space-default);
+			width: 100%;
+			height: 100%;
+			border: 1px solid var(--contrast-divider);
+			font-size: var(--body);
+			font: unset;
+		}
+	}
+}

@@ -1,0 +1,12 @@
+button {
+	cursor: pointer;
+}
+
+.button {
+	&--link {
+		background: transparent;
+		border: none;
+		font-size: var(--headline);
+		color: white;
+	}
+}

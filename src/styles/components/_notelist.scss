@@ -1,0 +1,23 @@
+.notelist {
+	height: 100%;
+	overflow-y: auto;
+}
+
+.note {
+	padding: var(--space-default);
+	color: var(--text-contrast);
+	font-size: var(--body);
+	border-bottom: 1px solid var(--contrast-divider);
+
+	&:hover:not(.note--active) {
+		background-color: var(--contrast);
+	}
+
+	&--active {
+		background-color: var(--contrast);
+		color: var(--main);
+		h2 {
+			font-weight: 600;
+		}
+	}
+}

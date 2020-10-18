@@ -1,0 +1,13 @@
+.header {
+	padding: var(--space-default) var(--space-default);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: var(--main);
+
+	h1 {
+		font-size: var(--title);
+		font-weight: bold;
+		color: var(--text-main);
+	}
+}
