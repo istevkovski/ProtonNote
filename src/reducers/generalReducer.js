@@ -1,5 +1,6 @@
 const generalState = {
 	editMode: false,
+	notes: []
 };
 
 const generalReducer = (state = generalState, action) => {
@@ -7,7 +8,17 @@ const generalReducer = (state = generalState, action) => {
 		case "ADD_NEW_NOTE":
 			return {
 				...state,
-				editMode: !state.editMode
+				editMode: true
+			}
+		case "SET_EDIT_NOTE":
+			return {
+				...state,
+				editMode: action.payload
+			}
+		case "UPDATE_NOTES":
+			return {
+				...state,
+				notes: action.payload
 			}
 		default:
 			return state

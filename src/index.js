@@ -1,14 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ProtonNote from './components/ProtonNote';
+import { Provider } from "react-redux";
+import ProtonNote from "./components/ProtonNote";
 import * as serviceWorker from "./serviceWorker";
+import store from "./store";
 
 import "./styles/global.scss";
 
 ReactDOM.render(
-	<React.StrictMode>
-		<ProtonNote />
-	</React.StrictMode>,
+	<Provider store={store}>
+		<React.StrictMode>
+			<ProtonNote />
+		</React.StrictMode>
+	</Provider>,
 	document.getElementById("protonnote")
 );
 

@@ -1,12 +1,14 @@
 .editor {
 	display: flex;
 	flex-direction: column;
+	border-left: 1px solid var(--contrast-divider);
 
 	&__title {
 		input {
 			padding: var(--space-half) var(--space-default);
 			width: 100%;
 			border: 1px solid var(--contrast-divider);
+			border-left: 0;
 			border-bottom: 0;
 			font-size: var(--body);
 		}
@@ -14,6 +16,7 @@
 
 	&__body {
 		display: flex;
+		flex-direction: column;
 		flex: 1;
 
 		textarea {
@@ -21,8 +24,60 @@
 			width: 100%;
 			height: 100%;
 			border: 1px solid var(--contrast-divider);
+			border-left: 0;
 			font-size: var(--body);
 			font: unset;
+		}
+	}
+
+	.markdown-editor {
+		width: 100%;
+		height: 100%;
+		
+		html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+			margin: revert;
+			padding: revert;
+			border: revert;
+			font-family: revert;
+			font-size: revert;
+			vertical-align: revert;
+			line-height: 1.5em;
+		}
+
+		pre {
+			border: 1px solid #ccc;
+		}
+			
+		blockquote {
+			color: #666;
+			margin: 0;
+			padding-left: 3em;
+			border-left: 0.5em #eee solid;
+			line-height: 1.5em;
+		}
+			
+		tr {
+			border-top: 1px solid #c6cbd1;
+			background: #fff;
+		}
+			
+		th,
+		td {
+			padding: 6px 13px;
+			border: 1px solid #dfe2e5;
+		}
+			
+		table tr:nth-child(2n) {
+			background: #f6f8fa;
+		}
+	}
+
+	&__controls {
+		display: flex;
+		justify-content: space-between;
+
+		.group {
+			display: flex;
 		}
 	}
 }

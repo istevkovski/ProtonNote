@@ -3,6 +3,34 @@ button {
 }
 
 .button {
+	&--icon {
+		padding: var(--space-half) var(--space-default);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		background: transparent;
+		border: none;
+		font-size: var(--body);
+		transition: all .20s ease-in-out;
+
+		svg {
+			margin-bottom: var(--space-spacer);
+			width: auto;
+			height: 26px;
+
+			path { transition: all .20s ease-in-out; }
+		}
+
+		&:hover {
+			color: var(--main);
+
+			svg path {
+				fill: var(--main);
+			}
+		}
+	}
+
 	&--link {
 		background: transparent;
 		border: none;

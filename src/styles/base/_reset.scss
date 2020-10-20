@@ -20,8 +20,9 @@ time, mark, audio, video {
 	font-size: 100%;
 	vertical-align: baseline;
 }
-input, textarea {
+input, textarea, button {
 	font: inherit;
+	outline: none;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 

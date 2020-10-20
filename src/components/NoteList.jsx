@@ -1,26 +1,15 @@
 import React from 'react';
+import Note from './Note';
 
-export default function NoteList () {
+export default function NoteList ({notes}) {
+
 	return (
 		<div className="notelist">
-			<div className="note">
-				<h2 className="note__title">My first note</h2>
-			</div>
-			<div className="note note--active">
-				<h2 className="note__title">My second note</h2>
-			</div>
-			<div className="note">
-				<h2 className="note__title">My first note</h2>
-			</div>
-			<div className="note">
-				<h2 className="note__title">My second note</h2>
-			</div>
-			<div className="note">
-				<h2 className="note__title">My first note</h2>
-			</div>
-			<div className="note">
-				<h2 className="note__title">My second note</h2>
-			</div>
+			{
+				notes.map(note => {
+					return <Note title={note.title} />
+				})
+			}
 		</div>
 	);
 }
