@@ -104,7 +104,7 @@ export default function NoteEditor () {
 			</div>
 			<div className="editor__body">
 				{ renderEditorBody() }
-				<div className="editor__controls">
+				<div className="editor__controls" disabled={isLoading}>
 					{ renderEditorControls() }
 				</div>
 			</div>

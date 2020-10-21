@@ -103,6 +103,11 @@
 		display: flex;
 		justify-content: space-between;
 
+		&[disabled] button {
+			pointer-events: none;
+			opacity: 0.6;
+		}
+
 		.group {
 			display: flex;
 		}
