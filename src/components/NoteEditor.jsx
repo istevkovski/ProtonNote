@@ -1,32 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import { useDispatch, useSelector } from 'react-redux';
-import { setEditNote } from '../actions/generalActions';
+import { createNewNote, removeSelectedNote, setEditNote, setIsLoading, updateNote } from '../actions/generalActions';
 import { Cancel, Edit, Save, Trash } from './Icons';
+import Loader from './Loader';
+import { decrypt } from '../lib/encryptor';
 
 export default function NoteEditor () {
 	// General
+	const isLoading = useSelector(state => state.general.isLoading);
 	const isEditingNote = useSelector(state => state.general.editMode);
+	const isNewNote = useSelector(state => state.general.isNewNote);
+	const id = useSelector(state => state.general.activeNoteId);
+	const note = useSelector(state => state.general.activeNote);
 	// Local
+	const [title, setTitle] = useState('');
 	const [markdown, setMarkdown] = useState('');
-
+	// Tools
+	const isFirstRun = useRef(true);
 	const dispatch = useDispatch();
+
+	function handleSaveNote () {
+		if(isNewNote) dispatch(createNewNote({title, markdown}))
+		else dispatch(updateNote(id, title, markdown));
+	}
+
+	function handleCancelChanges () {
+		setTitle(note.title);
+		setMarkdown(note.markdown);
+		dispatch(setEditNote(false));
+	}
+
+	function handleDeleteNote () {
+		dispatch(removeSelectedNote(id))
+	}
 
 	function renderEditorControls () {
 		if(isEditingNote) {
 			return (
 				<>
-				<button className="button button--icon" onClick={() => dispatch(setEditNote(false))}>
+				<button className="button button--icon" onClick={() => handleCancelChanges()}>
 					<Cancel />
 					<p>Cancel</p>
 				</button>
 				<div className="group">
-					<button className="button button--icon">
+					<button className="button button--icon" onClick={() => handleSaveNote()}>
 						<Save />
 						<p>Save</p>
 					</button>
-					<button className="button button--icon">
+					<button className="button button--icon" onClick={() => handleDeleteNote()}>
 						<Trash />
 						<p>Delete</p>
 					</button>
@@ -43,33 +66,46 @@ export default function NoteEditor () {
 		}
 	}
 
-// # A paragraph with *emphasis* and **strong importance**.
+	function renderEditorBody () {
+		if(isLoading) return <Loader />
 
-// > A block quote with ~strikethrough~ and a URL: https://reactjs.org.
+		if(isEditingNote && !isLoading) {
+			return <textarea name="editor__body" id="editorNoteBody" value={markdown} onChange={(e) => setMarkdown(e.target.value)}></textarea>
+		} else {
+			return <ReactMarkdown className="markdown-editor" plugins={[gfm]} rawSourcePos={true} children={markdown} />
+		}
+	}
 
-// * Lists
-// * [ ] todo
-// * [x] done
+	useEffect(() => {
+		if(isFirstRun.current) { return; }
+		const processNoteEncryption = async () => {
+			dispatch(setIsLoading(true));
+			if(note && !isNewNote) {
+				setTitle(note.title);
+				const decryptedMarkdown = await decrypt(note.markdown);
+				setMarkdown(decryptedMarkdown);
+				dispatch(setIsLoading(false));
+			} else if (isNewNote) {
+				setTitle('');
+				setMarkdown('');
+			}
+		}
+		processNoteEncryption ();
+	}, [note, isEditingNote]);
 
-// A table:
-
-// | a | b |
-// | - | - |
+	useEffect(() => {
+		if(isFirstRun) { isFirstRun.current = false; }
+	}, []);
 
 	return (
 		<div className="editor">
 			<div className="editor__title">
-				<input type="text" placeholder="My first note"/>
+				<input type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
 			</div>
 			<div className="editor__body">
-				{
-					isEditingNote ?
-					<textarea name="editor__body" id="editorNoteBody" value={markdown} onChange={(e) => setMarkdown(e.target.value)}></textarea>
-					:
-					<ReactMarkdown className="markdown-editor" plugins={[gfm]} rawSourcePos={true} children={markdown} />
-				}
+				{ renderEditorBody() }
 				<div className="editor__controls">
-					{renderEditorControls()}
+					{ renderEditorControls() }
 				</div>
 			</div>
 		</div>

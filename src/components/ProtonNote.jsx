@@ -16,34 +16,65 @@ export default function ProtonNote () {
 		{
 			title: "My first note",
 			markdown:
-`# A paragraph with *emphasis* and **strong importance**.
+`---
+__Advertisement :)__
 
-> A block quote with ~strikethrough~ and a URL: https://reactjs.org.
+- __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
+  resize in browser.
+- __[babelfish](https://github.com/nodeca/babelfish/)__ - developer friendly
+  i18n with plurals support and easy syntax.
 
-* Lists
-* [ ] todo
-* [x] done
+You will like those projects!
 
-A table:
+---
 
-| a | b |
-| - | - |`
+# h1 Heading 8-)
+## h2 Heading
+### h3 Heading
+#### h4 Heading
+##### h5 Heading
+###### h6 Heading`
 		},
 		{
-			title: "My second note",
+			title: "Blockquotes!",
 			markdown:
-`# A paragraph with *emphasis* and **strong importance**.
+`## Blockquotes
 
-> A block quote with ~strikethrough~ and a URL: https://reactjs.org.
 
-* Lists
-* [ ] todo
-* [x] done
+> Blockquotes can also be nested...
+>> ...by using additional greater-than signs right next to each other...
+> > > ...or with spaces between arrows.`
+		},
+		{
+			title: "Code",
+			markdown:
+`## Code
 
-A table:
+Inline \`code\`
 
-| a | b |
-| - | - |`
+Indented code
+
+    // Some comments
+    line 1 of code
+    line 2 of code
+    line 3 of code
+
+
+Block code "fences"
+
+\`\`\`
+Sample text here...
+\`\`\`
+
+Syntax highlighting
+
+\`\`\` js
+var foo = function (bar) {
+  return bar++;
+};
+
+console.log(foo(5));
+\`\`\``
 		}
 	]
 

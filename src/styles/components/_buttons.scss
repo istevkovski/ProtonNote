@@ -1,5 +1,10 @@
 button {
 	cursor: pointer;
+
+	&:disabled {
+		opacity: .6;
+		cursor: default;
+	}
 }
 
 .button {
