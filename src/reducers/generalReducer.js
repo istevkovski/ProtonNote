@@ -1,5 +1,3 @@
-import { bindActionCreators } from 'redux';
-
 const generalState = {
 	isLoading: false,
 	isNewNote: false,

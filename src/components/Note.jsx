@@ -14,7 +14,7 @@ export default function Note ({title, active, id, disabled}) {
 		<div
 			className={`note ${active ? 'note--active' : ''}`}
 			onClick={() => handleNoteSelection()}
-			disabled={Boolean(isEditingNote && !active || disabled)}
+			disabled={Boolean(isEditingNote && (!active || disabled))}
 		>
 			<h2 className="note__title">{title}</h2>
 		</div>
