@@ -18,7 +18,8 @@ const generalReducer = (state = generalState, action) => {
 			return {
 				...state,
 				isNewNote: action.payload,
-				editMode: action.payload
+				editMode: action.payload,
+				activeNote: undefined
 			}
 		case "SET_IS_LOADING":
 			return {

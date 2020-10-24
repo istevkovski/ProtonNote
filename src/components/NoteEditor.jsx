@@ -27,8 +27,13 @@ export default function NoteEditor () {
 	}
 
 	function handleCancelChanges () {
-		setTitle(note.title);
-		setMarkdown(note.markdown);
+		if(note) {
+			setTitle(note.title);
+			setMarkdown(note.markdown);
+		} else {
+			setTitle('');
+			setMarkdown('');
+		}
 		dispatch(setEditNote(false));
 	}
 
@@ -84,11 +89,11 @@ export default function NoteEditor () {
 				setTitle(note.title);
 				const decryptedMarkdown = await decrypt(note.markdown);
 				setMarkdown(decryptedMarkdown);
-				dispatch(setIsLoading(false));
-			} else if (isNewNote) {
+			} else {
 				setTitle('');
 				setMarkdown('');
 			}
+			dispatch(setIsLoading(false));
 		}
 		processNoteEncryption ();
 	}, [note, isEditingNote]);
@@ -104,7 +109,7 @@ export default function NoteEditor () {
 			</div>
 			<div className="editor__body">
 				{ renderEditorBody() }
-				<div className="editor__controls" disabled={isLoading}>
+				<div className="editor__controls" disabled={isLoading || (note === undefined && !isEditingNote)}>
 					{ renderEditorControls() }
 				</div>
 			</div>
