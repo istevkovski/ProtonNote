@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveNote } from '../actions/generalActions';
 
-export default function Note ({title, active, id}) {
+export default function Note ({title, active, id, disabled}) {
 	const isEditingNote = useSelector(state => state.general.editMode);
 	const dispatch = useDispatch();
 
@@ -14,7 +14,7 @@ export default function Note ({title, active, id}) {
 		<div
 			className={`note ${active ? 'note--active' : ''}`}
 			onClick={() => handleNoteSelection()}
-			disabled={Boolean(isEditingNote && !active)}
+			disabled={Boolean(isEditingNote && !active || disabled)}
 		>
 			<h2 className="note__title">{title}</h2>
 		</div>

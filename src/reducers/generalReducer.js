@@ -1,3 +1,5 @@
+import { bindActionCreators } from 'redux';
+
 const generalState = {
 	isLoading: false,
 	isNewNote: false,
@@ -40,6 +42,8 @@ const generalReducer = (state = generalState, action) => {
 						return {title: action.payload.title, markdown: action.payload.markdown};
 					else return note;
 				}),
+				activeNote: {title: action.payload.title, markdown: action.payload.markdown},
+				activeNoteId: action.payload.id,
 				editMode: false,
 			}
 		case "CREATE_NOTE":
@@ -47,7 +51,7 @@ const generalReducer = (state = generalState, action) => {
 				...state,
 				notes: [...state.notes, action.payload],
 				activeNoteId: state.notes.length, // Why it works? Ids start from 0, the length from 1.
-				note: action.payload,
+				activeNote: action.payload,
 				editMode: false,
 				isNewNote: false,
 				isLoading: false
