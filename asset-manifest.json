@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/istevkovski/ProtonNote/static/css/main.aa1cb621.chunk.css",
+    "main.js": "/istevkovski/ProtonNote/static/js/main.d64c41e6.chunk.js",
+    "main.js.map": "/istevkovski/ProtonNote/static/js/main.d64c41e6.chunk.js.map",
+    "runtime-main.js": "/istevkovski/ProtonNote/static/js/runtime-main.ba88453f.js",
+    "runtime-main.js.map": "/istevkovski/ProtonNote/static/js/runtime-main.ba88453f.js.map",
+    "static/js/2.b853d710.chunk.js": "/istevkovski/ProtonNote/static/js/2.b853d710.chunk.js",
+    "static/js/2.b853d710.chunk.js.map": "/istevkovski/ProtonNote/static/js/2.b853d710.chunk.js.map",
+    "index.html": "/istevkovski/ProtonNote/index.html",
+    "precache-manifest.bb4db69b7ba69a846d0d082e620264c5.js": "/istevkovski/ProtonNote/precache-manifest.bb4db69b7ba69a846d0d082e620264c5.js",
+    "service-worker.js": "/istevkovski/ProtonNote/service-worker.js",
+    "static/css/main.aa1cb621.chunk.css.map": "/istevkovski/ProtonNote/static/css/main.aa1cb621.chunk.css.map",
+    "static/js/2.b853d710.chunk.js.LICENSE.txt": "/istevkovski/ProtonNote/static/js/2.b853d710.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ba88453f.js",
+    "static/js/2.b853d710.chunk.js",
+    "static/css/main.aa1cb621.chunk.css",
+    "static/js/main.d64c41e6.chunk.js"
+  ]
+}
